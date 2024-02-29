@@ -24,4 +24,5 @@ public static class Sorting {
             }
         }
     }
+    // O(n^2)
 }
