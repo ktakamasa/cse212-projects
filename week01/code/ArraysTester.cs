@@ -39,7 +39,20 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+        // 1. Initialize an array of doubles to store the multiples.
+        double[] multiplesArray = new double[length];
+
+        // 2. Use a for loop to iterate a 'length' times to calculate
+        //  and add to the array with multiples of the 'number'.
+
+        for (int i = 0; i < length; i++)
+        {
+            // 3. Calculate the multiple of the number and store it in the array.
+            multiplesArray[i] = number * (i + 1);
+        }
+
+        // 4. Return the array containing the multiples.
+        return multiplesArray;
     }
     
     /// <summary>
@@ -57,5 +70,12 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
+        // 1. Create a list to store the elements that will be rotated.
+        // 2. Extract the last 'amount' elements from the end of the list and store them in a separate list.
+        List<int> rotatedElements = data.GetRange(data.Count - amount, amount);
+        // 3. Remove the last 'amount' elements from the end of the original list.
+        data.RemoveRange(data.Count - amount, amount);
+        // 4. Insert the extracted elements at the beginning of the original list to rotate them to the right.
+        data.InsertRange(0, rotatedElements);
     }
 }
