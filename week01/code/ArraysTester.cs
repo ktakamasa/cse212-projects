@@ -44,10 +44,11 @@ public static class ArraysTester {
 
         // 2. Use a for loop to iterate a 'length' times to calculate
         //  and add to the array with multiples of the 'number'.
-
         for (int i = 0; i < length; i++)
         {
-            // 3. Calculate the multiple of the number and store it in the array.
+            // 3. Calculate the multiple of the 'number' by multiplying it
+            //    with the current index 'i' incremented by 1 
+            //    and store the result in the array at index 'i'.
             multiplesArray[i] = number * (i + 1);
         }
 
@@ -71,8 +72,8 @@ public static class ArraysTester {
         // be implemented by another person.
 
         // 1. Create a list to store the elements that will be rotated.
-        // 2. Extract the last 'amount' elements from the end of the list and store them in a separate list.
         List<int> rotatedElements = data.GetRange(data.Count - amount, amount);
+        // 2. Extract the last 'amount' elements from the end of the list and store them in a separate list.
         // 3. Remove the last 'amount' elements from the end of the original list.
         data.RemoveRange(data.Count - amount, amount);
         // 4. Insert the extracted elements at the beginning of the original list to rotate them to the right.
