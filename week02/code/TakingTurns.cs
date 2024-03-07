@@ -15,7 +15,7 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: Enqueue() inserting at 0 index instead of Add/appending to end of queue. 
 
         Console.WriteLine("---------");
 
@@ -38,7 +38,7 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: Found: Enqueue() inserting at 0 index instead of Add/appending to end of queue. 
 
         Console.WriteLine("---------");
 
@@ -56,7 +56,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Players with infinite number of turns (0 or less) not added back to queue; need to handle infinite turns
 
         Console.WriteLine("---------");
 
@@ -73,7 +73,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Players with infinite number of turns (0 or less) not added back to queue; need to handle infinite turns
 
         Console.WriteLine("---------");
 
@@ -83,6 +83,6 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: None; the test results gave a message saying "No one in the queue."
     }
 }
