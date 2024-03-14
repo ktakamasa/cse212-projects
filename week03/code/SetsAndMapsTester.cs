@@ -111,6 +111,20 @@ public static class SetsAndMapsTester {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
+        // declare new set
+        var wordsSet = new HashSet<string>();
+
+        // iterate through the arrary of words
+        foreach (string word in words) {
+            // reverse the string 
+            string reversedWord = new(word.Reverse().ToArray());
+            // check if the 
+            if (wordsSet.Contains(reversedWord)) {
+                Console.WriteLine($"{word} & {reversedWord}");
+            } else {
+                wordsSet.Add(word);
+            }
+        }
     }
 
     /// <summary>
@@ -131,7 +145,16 @@ public static class SetsAndMapsTester {
         var degrees = new Dictionary<string, int>();
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
-            // Todo Problem 2 - ADD YOUR CODE HERE
+            // declare variable to store degree name
+            string degreeName = fields[3];
+            // If the degree name is not in the file field, add it
+            if (!degrees.ContainsKey(degreeName)) {
+                // The key is the degree name, since it's the first time seeing it, set it to 1.
+                degrees[degreeName] = 1;
+            // If the degree name is already in the table, then update the value
+            } else {
+                degrees[degreeName]++;
+            }
         }
 
         return degrees;
@@ -157,8 +180,44 @@ public static class SetsAndMapsTester {
     /// # Problem 3 #
     /// #############
     private static bool IsAnagram(string word1, string word2) {
-        // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        // remove spaces to ignore any spaces
+        // convert words to lower case to ignore cases
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+        // check if the lengths of the words are the same
+        if (word1.Length != word2.Length) {
+            return false;
+        }
+        // create a dictionary
+        var charCount = new Dictionary<char, int>();
+
+          // Count characters in word1
+        foreach (var x in word1)
+        {
+            if (!charCount.ContainsKey(x))
+                charCount[x] = 1;
+            else
+                charCount[x]++ ;
+        }
+
+        // Check characters in word2
+        foreach (char x in word2)
+        {
+            if (!charCount.ContainsKey(x) || charCount[x] == 0)
+                return false;
+            charCount[x]--;
+        }
+
+        // last check to see if all character counts are zero
+        foreach (var letter in charCount)
+        {
+            if (letter.Value != 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -235,5 +294,11 @@ public static class SetsAndMapsTester {
         // 1. Add code in FeatureCollection.cs to describe the JSON using classes and properties 
         // on those classes so that the call to Deserialize above works properly.
         // 2. Add code below to print out each place a earthquake has happened today and its magitude.
+
+        foreach (var feature in featureCollection.Features) {
+            var place = feature.Properties.Place;
+            var magnitude = feature.Properties.Mag;
+            Console.WriteLine($"{place} - Mag {magnitude}");
+        }
     }
 }
